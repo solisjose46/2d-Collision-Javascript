@@ -1,5 +1,6 @@
 //next step, make page responsive for mobile
 document.addEventListener('load', loadObstacles());
+addPolyPoints();
 var obstacles = Array.from(document.getElementsByClassName('obstacles'));
 //------handle key events-----
 var map = {};
@@ -42,16 +43,22 @@ function characterMovement(direction){
     var characterClone = character.cloneNode(false);
     game.appendChild(characterClone);
     moveObject(characterClone, direction, SPEED_LIMIT);
+    var dim = getDimensions(characterClone);
     var characterCollision = obstacleCollision(characterClone);
-    if(!characterCollision.status){
+    var boundCheck = contains(polygon, dim.top, dim.left);
+    if(!characterCollision.status && boundCheck == 1){
         moveObject(character, direction, SPEED_LIMIT);
     }
     characterClone.remove();
 }
 
 function projectileMovement(object, direction){
+    var objdim = getDimensions(object);
     var SPEED_LIMIT = 20;
-    return moveObject(object, direction, SPEED_LIMIT);
+    if(contains(polygon, objdim.top, objdim.left) == 1){
+        return moveObject(object, direction, SPEED_LIMIT);
+    }
+    return false;
 }
 
 function moveObject(object, direction, SPEED_LIMIT){

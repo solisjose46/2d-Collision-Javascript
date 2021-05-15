@@ -25,6 +25,7 @@ var obstaclePositions = [
         role: 'environment-B'
     }
 ];
+
 //load environment objects
 function loadObstacles(){
     for(var i = 0; i < obstaclePositions.length; i++){
@@ -114,3 +115,78 @@ function moveY(object, direction, SPEED_LIMIT){
     return false;
 }
 //----movement functions---------
+
+var polygon = [
+    {
+        x: 20,
+        y: 200
+    },
+    {
+        x: 20,
+        y: 150
+    },
+    {
+        x: 50,
+        y: 100
+    },
+    {
+        x: 20,
+        y: 20
+    },
+    {
+        x: 400,
+        y: 20
+    },
+    {
+        x: 450,
+        y: 100
+    },
+    {
+        x: 400,
+        y: 150
+    },
+    {
+        x: 400,
+        y: 200
+    }
+];
+
+function addPolyPoints(){
+    for(var i = 0; i < polygon.length; i++){
+        var new_square = document.createElement('DIV');
+        new_square.style.left = polygon[i].x + 'px';
+        new_square.style.top = polygon[i].y + 'px';
+        new_square.className = 'squares';
+        game.appendChild(new_square);
+    }
+}
+
+function contains(bounds, lat, lng) {
+    //https://rosettacode.org/wiki/Ray-casting_algorithm
+    var count = 0;
+    for (var b = 0; b < bounds.length; b++) {
+        var vertex1 = bounds[b];
+        var vertex2 = bounds[(b + 1) % bounds.length];
+        if (west(vertex1, vertex2, lng, lat))
+            ++count;
+    }
+    return count % 2;
+ 
+    /**
+     * @return {boolean} true if (x,y) is west of the line segment connecting A and B
+     */
+    function west(A, B, x, y) {
+        if (A.y <= B.y) {
+            if (y <= A.y || y > B.y ||
+                x >= A.x && x >= B.x) {
+                return false;
+            } else if (x < A.x && x < B.x) {
+                return true;
+            } else {
+                return (y - A.y) / (x - A.x) > (B.y - A.y) / (B.x - A.x);
+            }
+        } else {
+            return west(B, A, x, y);
+        }
+    }
+}
