@@ -160,7 +160,7 @@ function addPolyPoints(){
         game.appendChild(new_square);
     }
 }
-
+//bounds, top, left
 function contains(bounds, lat, lng) {
     //https://rosettacode.org/wiki/Ray-casting_algorithm
     var count = 0;
