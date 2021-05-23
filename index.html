@@ -1,14 +1,41 @@
 <!doctype html>
 <html lang="en">
   <head>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- Optional CSS -->
     <link href="index.css" rel="stylesheet">
     <title>2D Collision</title>
   </head>
   <body>
-      <div id='game-container'>
-          <div id='character' class='north'></div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col">
+          <div id='game-container'><div id='character' class='north'></div></div>
+        </div>
       </div>
+      <div class="row">
+        <div class="col">
+          <div class="row">
+            <div class="col"><h5><strong>2D collison detection and response in vanilla JavaScript</strong></h5> </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <ul class="list-group text-dark">
+                <li class="list-group-item">No mobile support as of yet. Move with WASD and shoot with Spacebar.</li>
+                <li class="list-group-item">Move the red box. Red box collides with yellow, green and blue boxes.</li>
+                <li class="list-group-item">Yellow box does not disappear when hit. This can simulate a barrier.</li>
+                <li class="list-group-item">Blue and Green box disappear when hit. This can simulate targets.</li>
+                <li class="list-group-item">Smaller violet boxes act as vertices for the polygon surrounding red box. Utilized a 2D raycasting algorithm to check bounds. <a href="https://rosettacode.org/wiki/Ray-casting_algorithm#JavaScript" class="card-link" target="_blank" rel="noreferrer noopener">Credit for raycasting algorithm</a></li>
+                <li class="list-group-item">Notice red box and projectiles do not pass bounds of the polygon.</li>
+                <li class="list-group-item">This collison detection and response algorithm was used in my <a href="https://solisjose46.github.io/jackal-js/" class="card-link" target="_blank" rel="noreferrer noopener">jackal-js project.</a></li>
+                <li class="list-group-item"><a href="https://github.com/solisjose46/2d-Collision-Javascript" class="card-link" target="_blank" rel="noreferrer noopener">View this code on my GitHub.</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- Optional JavaScript; choose one of the two! -->
     <script src="globals.js"></script>
     <script src="index.js"></script>

@@ -7,7 +7,7 @@
     height: 250px;
     background-color: aquamarine;
     border: 2px solid black;
-    position: absolute;
+    position: relative;
 }
 #character{
     width: 30px;
